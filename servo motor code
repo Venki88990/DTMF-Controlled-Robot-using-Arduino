@@ -1,0 +1,57 @@
+#include <Servo.h>
+
+Servo servoLeft;   // create left servo object
+Servo servoRight;  // create right servo object
+
+int DTMFpin = 2;  // pin connected to DTMF decoder output
+int servoLeftPin = 3;  // pin connected to left servo
+int servoRightPin = 4; // pin connected to right servo
+
+int toneVal;   // variable to store DTMF tone value
+int servoLeftVal = 90;  // initial servo left position
+int servoRightVal = 90; // initial servo right position
+
+void setup() {
+  servoLeft.attach(servoLeftPin);   // attach left servo to pin
+  servoRight.attach(servoRightPin); // attach right servo to pin
+}
+
+void loop() {
+  toneVal = toneDetection(DTMFpin);  // get DTMF tone value
+  
+  // check tone value and move servos accordingly
+  switch (toneVal) {
+    case 1:   // move forward
+      servoLeftVal = 0;
+      servoRightVal = 180;
+      break;
+    case 2:   // move backward
+      servoLeftVal = 180;
+      servoRightVal = 0;
+      break;
+    case 3:   // move left
+      servoLeftVal = 0;
+      servoRightVal = 0;
+      break;
+    case 4:   // move right
+      servoLeftVal = 180;
+      servoRightVal = 180;
+      break;
+    case 5:   // stop
+      servoLeftVal = 90;
+      servoRightVal = 90;
+      break;
+    default:  // do nothing
+      break;
+  }
+  
+  servoLeft.write(servoLeftVal);   // set left servo position
+  servoRight.write(servoRightVal); // set right servo position
+}
+
+int toneDetection(int pin) {
+  // detect DTMF tone and return corresponding number
+  // this function would need to be implement with the library or device you are using
+  // or you may use some libraries available for that. 
+  // 
+}
