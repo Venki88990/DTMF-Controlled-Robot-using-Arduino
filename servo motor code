@@ -55,3 +55,10 @@ int toneDetection(int pin) {
   // or you may use some libraries available for that. 
   // 
 }
+
+
+You may need to modify the code based on the specific DTMF decoder you are using, and the pinout of your robot. Additionally the toneDetection function is just a place holder, you need to use DTMF decoder library or device to get the DTMF tone.
+
+You will also need to calibrate the servo motors to make sure that the robot moves in the desired direction when a specific DTMF tone is received.
+
+You can refer to the Arduino Servo library and DTMF decoder library documentation to learn more about how to use these libraries and adjust the code as per your requirement.
